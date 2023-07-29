@@ -1,0 +1,2 @@
+# errs
+Go errors additions
