@@ -14,28 +14,28 @@ func WithStack(err error) error {
 
 	const skipStack = 3
 
-	return stackErr{
+	return stackError{
 		err:   err,
 		stack: cstack.CallStack(skipStack),
 	}
 }
 
-type stackErr struct {
+type stackError struct {
 	err   error
 	stack cstack.Stack
 }
 
-func (s stackErr) Error() string {
+func (s stackError) Error() string {
 	return s.err.Error()
 }
 
-func (s stackErr) Unwrap() error {
+func (s stackError) Unwrap() error {
 	return s.err
 }
 
 // GetStack returns the stack from the error chain if there was one added using WithStack.
 func GetStack(err error) (cstack.Stack, bool) {
-	var r stackErr
+	var r stackError
 	if !errors.As(err, &r) {
 		return nil, false
 	}

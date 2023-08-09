@@ -1,3 +1,7 @@
+// Package errs provides some special error types to be used with the log package.
+//
+// Features:
+//   - error with stack trace
 package errs
 
 import (
@@ -10,7 +14,8 @@ import (
 func New(msg string) error {
 	const skipStack = 3
 
-	return stackErr{
+	return stackError{
+		//nolint:goerr113
 		err:   errors.New(msg),
 		stack: cstack.CallStack(skipStack),
 	}
