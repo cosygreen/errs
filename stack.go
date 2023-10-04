@@ -12,7 +12,16 @@ func WithStack(err error) error {
 		return nil
 	}
 
-	const skipStack = 3
+	return withStack(err)
+}
+
+func withStack(err error) error {
+	if errors.Is(err, stackError{}) {
+		// already has a stack
+		return err
+	}
+
+	const skipStack = 4
 
 	return stackError{
 		err:   err,
