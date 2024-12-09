@@ -13,8 +13,8 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/cosygreen/errs"
 	"github.com/tehsphinx/cstack"
-	"github.com/tehsphinx/errs"
 )
 
 func main() {
