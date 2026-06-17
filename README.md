@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repository has moved to GitLab: https://git.cosy.green/packages/errs
+
 # errs
 
 The `errs` package is meant to be used in combination with the default errors package.
